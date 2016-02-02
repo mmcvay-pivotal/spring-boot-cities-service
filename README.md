@@ -58,6 +58,8 @@ spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
 ###Wait, I want a GUI!
 There is a separate application which can be used as a GUI to consume the data delivered by this Microservice here: https://github.com/skazi-pivotal/spring-boot-cities-ui or feel free to write your own, using that as a guide.
 
+![Cities](/docs/Cities-ui.png)
+
 ###This is too simple!!
 Yes it is, but ok then if you want a more advanced Microservice based application you should really check out this Repo: https://github.com/dpinto-pivotal/cf-SpringBootTrader. This is several microservices tied together using some great Netflix OSS features delivered via Spring and Cloud Foundry.
 
