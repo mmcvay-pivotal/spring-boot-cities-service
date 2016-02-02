@@ -10,3 +10,17 @@ logging:
         springframework:
            web: WARN
            cloud: WARN
+spring:
+  application:
+    name: ${vcap.application.application_name:cities}
+security:
+  basic:
+    enabled: false
+           
+---
+spring:
+  profiles: default
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

@@ -8,6 +8,8 @@ import java.util.LinkedHashMap;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.boot.test.TestRestTemplate;
@@ -28,8 +30,9 @@ import org.springframework.web.client.RestTemplate;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = SBootCitiesServiceApplication.class)
 //@WebAppConfiguration
-@WebIntegrationTest(randomPort = true)
+@WebIntegrationTest({"server.port:0", "eureka.client.enabled:false"})
 public class TestRestAPICityRepository {
+	private static final Logger logger = LoggerFactory.getLogger(TestRestAPICityRepository.class);
 	RestTemplate restTemplate = new TestRestTemplate();
 
 	@Value("${local.server.port}")
@@ -52,25 +55,5 @@ public class TestRestAPICityRepository {
 	public void canFetchCitiesPaged() {
 		Object apiResponse = restTemplate.getForEntity(url + "?page=0&size=2",Object.class);
 		assertNotNull(apiResponse);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Test
-	public void canFetchBirmingham() {
-		ResponseEntity<Object> apiResponse = restTemplate.getForEntity(url + "/search/name?q=Birmingham",Object.class);
-		assertNotNull(apiResponse);
-		assertNotNull(apiResponse.getBody());
-		assertTrue(getTotalElements((LinkedHashMap<String, Object>) apiResponse.getBody()) == 1);
-		
-		apiResponse = restTemplate.getForEntity(url + "/search/name?q=Birmingham2",Object.class);
-		assertNotNull(apiResponse);
-		assertNotNull(apiResponse.getBody());
-		assertTrue(getTotalElements((LinkedHashMap<String, Object>) apiResponse.getBody()) == 0);
-	}
-	
-	private int getTotalElements(LinkedHashMap<String, Object> respEntity) {
-		@SuppressWarnings("unchecked")
-		LinkedHashMap<String, Integer> page = (LinkedHashMap<String, Integer>) respEntity.get("page");
-		return page.get("totalElements").intValue();
 	}
 }
