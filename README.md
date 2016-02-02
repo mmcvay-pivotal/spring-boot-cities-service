@@ -1,4 +1,4 @@
-# SBoot-Cities-Service
+# spring-boot-cities-service
 This microservice runs on a local machine or on Cloud Foundry. Note: This is a FORK of https://github.com/cf-platform-eng/spring-boot-cities! Thanks to help and tips from my team, as well as Dave Syer and Scott Frederick in this and other branches :) This is the SCS branch which works with Spring Cloud Services.
 
 This is a very simple Spring Boot project which demonstrates, that with only small a footprint of code its possible to a create a complex webservice which exposes CRUD operations as restful endpoints. It's good when doing a demo on Spring Boot to iteratively build the app by building just a web controller to say hello worl,d then modify it to return a list of City objects, then to read those city objects froma db, and then finally elminate most of the code and just leave the single Repository interface which does so much more ! Oh - also to show off actuator!
