@@ -211,7 +211,8 @@ push()
   if [ "$PROMOTE" == "true" ]
   then
     get_old_route
-    cf push $APPNAME -b java_buildpack_offline
+    BPACK=`cf buildpacks | grep java | grep true | head -n 1 | cut -d ' ' -f1 | xargs`
+    cf push $APPNAME -b $BPACK
   else
     # Override the bind to Discovery service in the manifest temporarily
     TEMP_MANIFEST=`grep -v $DISCOVERY manifest.yml > $APPNAME.yml`

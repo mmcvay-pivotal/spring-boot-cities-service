@@ -122,12 +122,13 @@ push()
   DOMAIN=`cf domains | grep shared | head -n 1 | cut -d" " -f1`
 
   # Is this an app Promotion?
+  BPACK=`cf buildpacks | grep java | grep true | head -n 1 | cut -d ' ' -f1 | xargs`
   if [ "$PROMOTE" == "true" ]
   then
     get_old_route
-    cf push $APPNAME -b java_buildpack_offline -f manifest_quick.yml
+    cf push $APPNAME -b $BPACK -f manifest_quick.yml
   else
-    cf push $APPNAME -b java_buildpack_offline --random-route -f manifest_quick.yml
+    cf push $APPNAME -b $BPACK --random-route -f manifest_quick.yml
   fi
 
   map_new_routes
