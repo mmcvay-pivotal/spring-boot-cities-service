@@ -93,9 +93,11 @@ main()
   check_cli_installed
   build
   clean_cf
-  cf create-service p-mysql 100mb-dev MyDB
+  PLAN=`cf marketplace -s p-mysql | grep MySQL | head -n 1 | cut -d ' ' -f1 | xargs`
+  cf create-service p-mysql $PLAN MyDB
   echo "About to push application, you can monitor this using the command: cf logs $APPNAME"
-  cf push -b java_buildpack_offline 
+  BPACK=`cf buildpacks | grep java | grep true | head -n 1 | cut -d ' ' -f1 | xargs`
+  cf push -b $BPACK
 }
 
 SECONDS=0
