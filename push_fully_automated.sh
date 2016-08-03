@@ -186,7 +186,8 @@ push()
 {
   #Create Services
   echo_msg "Making initial (temporary) push to PCF"
-  create_service p-mysql 100mb-dev $DBSERVICE
+  PLAN=`cf marketplace -s p-mysql | grep MySQL | head -n 1 | cut -d ' ' -f1 | xargs`
+  create_service p-mysql $PLAN $DBSERVICE
   create_service p-service-registry standard $DISCOVERY
   if [ $service_created -eq 1 ]
   then
@@ -202,7 +203,7 @@ push()
   echo "Pushing $APPNAME"
   SRC_APP_NAME=$APPNAME
   DATE=`date "+%Y%m%d%H%M%S"`
-  APPNAME=$APPNAME-$DATE
+  #APPNAME=$APPNAME-$DATE
   #DOMAIN=`cf target | grep "API" | cut -d" " -f5 | sed "s/[^.]*.//"`
   DOMAIN=`cf domains | grep shared | head -n 1 | cut -d" " -f1`
 

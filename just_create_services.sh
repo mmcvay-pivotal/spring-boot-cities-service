@@ -87,7 +87,8 @@ create_services()
 {
   #Create Services
   echo_msg "Making initial (temporary) push to PCF"
-  create_service p-mysql 100mb-dev $DBSERVICE
+  PLAN=`cf marketplace -s p-mysql | grep -i 100mb | cut -d ' ' -f1 | xargs`
+  create_service p-mysql $PLAN $DBSERVICE
   create_service p-service-registry standard $DISCOVERY
   if [ $service_created -eq 1 ]
   then
