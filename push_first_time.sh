@@ -94,7 +94,7 @@ main()
   build
   clean_cf
   PLAN=`cf marketplace -s p-mysql | grep MB | head -n 1 | cut -d ' ' -f1 | xargs`
-  if [ $PLAN -ne 0 ]
+  if [ -z $PLAN ]
   then
     PLAN=`cf marketplace -s p-mysql | grep MySQL | head -n 1 | cut -d ' ' -f1 | xargs`
   fi
