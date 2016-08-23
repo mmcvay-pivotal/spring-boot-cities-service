@@ -2,7 +2,8 @@
 
 export TERM=${TERM:-dumb}
 echo "****** Starting"
-cd source-code
+cd cities-service
 ./gradlew build
-cp build/libs/*.jar ../build
+mkdir ../build/libs
+cp build/libs/*.jar ../build/libs
 echo "****** Finished"
