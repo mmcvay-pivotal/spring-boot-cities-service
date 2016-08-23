@@ -12,13 +12,6 @@ abort()
     exit 1
 }
 
-summary()
-{
-  echo_msg "Current Apps & Services in CF_SPACE"
-  cf apps
-  cf services
-}
-
 echo_msg()
 {
   echo ""
@@ -29,16 +22,6 @@ build()
 {
   echo_msg "Building application"
   ./gradlew build 
-}
-
-cf_app_delete()
-{
-  EXISTS=`cf apps | grep ${1} | wc -l | xargs`
-  if [ $EXISTS -ne 0 ]
-  then
-    echo "Deleting app"
-    cf delete -f -r ${1}
-  fi
 }
 
 cf_service_delete()

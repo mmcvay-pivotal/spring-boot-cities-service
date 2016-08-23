@@ -44,7 +44,7 @@ clean_cf()
 
 main()
 {
-  DBSERVICE=MyDB
+  APPNAME=cities-service
   install_cli 
   clean_cf
 }
