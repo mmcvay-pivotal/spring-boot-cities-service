@@ -110,6 +110,7 @@ case $1 in
     esac
     shift
 done
+echo $CF_API
 main
 #main $CF_DOMAIN $CF_USER $CF_PASSWORD $CF_ORG $CF_SPACE
 trap : 0
