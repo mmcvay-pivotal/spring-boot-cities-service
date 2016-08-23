@@ -8,7 +8,7 @@ image_resource:
     tag: latest
 
 inputs:
-  - name: cities-ui
+  - name: cities-service
 
 run:
   path: "cities-service/ci/scripts/createServices.sh"
