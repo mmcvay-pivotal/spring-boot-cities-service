@@ -86,6 +86,7 @@ main()
     PLAN=`cf marketplace -s p-mysql | grep MySQL | head -n 1 | cut -d ' ' -f1 | xargs`
   fi
   cf create-service p-mysql $PLAN MyDB
+  cf logout
 }
 
 SECONDS=0
