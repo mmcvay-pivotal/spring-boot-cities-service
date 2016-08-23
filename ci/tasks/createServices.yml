@@ -11,4 +11,5 @@ inputs:
   - name: cities-service
 
 run:
-  path: "cities-service/ci/tasks/createServices.sh"
+  path: "cities-service/ci/scripts/createServices.sh"
+  args: ["-a", "api.run.haas-35.pez.pivotal.io", "-u", "skazi", "-p", "letmein", "-o", "skazi", "s", "cities"]
