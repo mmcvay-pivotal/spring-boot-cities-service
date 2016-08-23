@@ -8,11 +8,11 @@ image_resource:
     tag: latest
 
 inputs:
-  - name: source-code
+  - name: cities-service
 
 run:
-  path: "source-code/gradlew"
-  args: ["--build-file", "source-code/build.gradle", "test"]
+  path: "cities-service/gradlew"
+  args: ["--build-file", "cities-service/build.gradle", "test"]
 
 params:
   TERM: -dumb
