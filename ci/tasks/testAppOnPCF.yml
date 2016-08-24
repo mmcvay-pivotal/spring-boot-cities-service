@@ -1,0 +1,15 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: curl
+    tag: latest
+
+inputs:
+  - name: cities-ui
+
+run:
+  path: "cities-ui/ci/scripts/testAppOnPCF.sh"
+  args: ["https://cities-service-bimanual-trough.cfapps.haas-35.pez.pivotal.io/cities", "Aldermoor"]
