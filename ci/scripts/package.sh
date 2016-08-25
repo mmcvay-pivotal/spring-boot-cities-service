@@ -3,7 +3,7 @@
 
 main()
 {
-  echo_msg "Starting"
+  echo_msg "Starting build for ${APPNAME}"
   cd $APPNAME
   ./gradlew build
   cp build/libs/*.jar ../build
