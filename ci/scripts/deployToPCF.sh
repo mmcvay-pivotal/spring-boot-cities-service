@@ -3,6 +3,7 @@
 
 main()
 {
+  pwd
   cf_login
   summaryOfApps
   VERSION=`cat resource-version/number`
@@ -13,7 +14,7 @@ main()
   APPNAME=$APPNAME-$VERSION
 
   echo_msg "Pushing new Microservice"
-  cf push $APPNAME 
+  cf push $APPNAME -p ../../build/${APPNAME}.jar -f manifest.yml
 
   summaryOfApps
   cf logout
