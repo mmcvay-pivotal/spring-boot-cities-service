@@ -1,10 +1,10 @@
 #!/bin/sh 
 set -e
-. $APPNAME2/ci/scripts/common.sh
+. $APPNAME/ci/scripts/common.sh
 
 main()
 {
-  echo "App is: $APPNAME2"
+  echo "App is: $APPNAME"
   cf_login 
   cf services
   EXISTS=`cf services | grep ${SERVICE_NAME} | wc -l | xargs`
