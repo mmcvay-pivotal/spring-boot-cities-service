@@ -4,5 +4,5 @@ CF_PASSWORD: letmein
 CF_ORG: skazi
 CF_SPACE: cities
 CF_SSL: --skip-ssl-validation
-APPNAME: cities-service
+APPNAME2: cities-service
 SERVICE_NAME: MyDB

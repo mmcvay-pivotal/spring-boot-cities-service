@@ -37,7 +37,7 @@ jobs:
       organization: {{CF_ORG}}
       space: {{CF_SPACE}}
       ssl: {{CF_SSL}}
-      APPNAME: {{APPNAME}}
+      APPNAME2: {{APPNAME2}}
       SERVICE_NAME: {{SERVICE_NAME}}
 
 - name: deployApp
@@ -48,12 +48,12 @@ jobs:
   - task: package
     file: cities-service/ci/tasks/package.yml
     params:
-      APPNAME: {{APPNAME}}
+      APPNAME2: {{APPNAME2}}
   - put: deploy-app
     params:
       manifest: cities-service/manifest.yml
       path: build/cities-service-0.0.1-SNAPSHOT.jar
-      current_app_name: {{APPNAME}}
+      current_app_name: {{APPNAME2}}
 
 - name: testAppOnPCF
   plan:
@@ -69,4 +69,4 @@ jobs:
       organization: {{CF_ORG}}
       space: {{CF_SPACE}}
       ssl: {{CF_SSL}}
-      APPNAME: {{APPNAME}}
+      APPNAME2: {{APPNAME2}}
