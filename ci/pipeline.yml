@@ -15,16 +15,6 @@ resources:
     branch: version
     file: version
 
-- name: deploy-app
-  type: cf
-  source:
-    api: {{CF_API}}
-    username: {{CF_USERNAME}}
-    password: {{CF_PASSWORD}}
-    organization: {{CF_ORG}}
-    space: {{CF_SPACE}}
-    skip_cert_check: true
-
 jobs:
 - name: testSrc
   build_logs_to_retain: 5
@@ -64,13 +54,17 @@ jobs:
     file: cities-service/ci/tasks/package.yml
     params:
       APPNAME: {{APPNAME}}
-  - put: resource-version
-    params: {file: resource-version/number}
-  - put: deploy-app
+  - get: resource-version
+  - task: deploy
+    file: cities-service/ci/tasks/deployToPCF.yml
     params:
-      manifest: cities-service/manifest.yml
-      path: build/cities-service-1.0.jar
-      current_app_name: {{APPNAME}}
+      api: {{CF_API}}
+      username: {{CF_USERNAME}}
+      password: {{CF_PASSWORD}}
+      organization: {{CF_ORG}}
+      space: {{CF_SPACE}}
+      ssl: {{CF_SSL}}
+      APPNAME: {{APPNAME}}
 
 - name: testAppOnPCF
   build_logs_to_retain: 5
