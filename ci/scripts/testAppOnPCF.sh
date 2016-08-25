@@ -5,6 +5,7 @@ searchForCity()
 {
   echo " Searching for Aldemoor ... at $URL"
   running=`curl -s $URL | grep "Aldermoor"`
+  echo $running
   exitIfNull $running
 }
 
@@ -14,13 +15,13 @@ main()
   summaryOfApps
   checkSpringBootAppOnPCF $APPNAME
   searchForCity
+  echo "logging out"
   cf logout
 }
 
 trap 'abort $LINENO' 0
 SECONDS=0
 SCRIPTNAME=`basename "$0"`
-
 main
 printf "\nExecuted $SCRIPTNAME in $SECONDS seconds.\n"
 trap : 0
