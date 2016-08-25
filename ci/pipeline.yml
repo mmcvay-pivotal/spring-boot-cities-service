@@ -37,7 +37,7 @@ jobs:
       organization: {{CF_ORG}}
       space: {{CF_SPACE}}
       ssl: {{CF_SSL}}
-      APPNAME2: {{APPNAME}}
+      APPNAME: {{APPNAME}}
       SERVICE_NAME: {{SERVICE_NAME}}
 
 - name: deployApp
@@ -48,7 +48,7 @@ jobs:
   - task: package
     file: cities-service/ci/tasks/package.yml
     params:
-      APPNAME2: {{APPNAME}}
+      APPNAME: {{APPNAME}}
   - put: deploy-app
     params:
       manifest: cities-service/manifest.yml
@@ -69,4 +69,4 @@ jobs:
       organization: {{CF_ORG}}
       space: {{CF_SPACE}}
       ssl: {{CF_SSL}}
-      APPNAME2: {{APPNAME}}
+      APPNAME: {{APPNAME}}

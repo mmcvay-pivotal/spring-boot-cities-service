@@ -1,12 +1,11 @@
 #!/bin/sh 
 set -e
-. $APPNAME2/ci/scripts/common.sh
+. $APPNAME/ci/scripts/common.sh
 
 main()
 {
-  echo "App is: $APPNAME2 - $SERVICE_NAME"
   cf_login 
-  cf services
+  summaryOfServices
   EXISTS=`cf services | grep ${SERVICE_NAME} | wc -l | xargs`
   if [ $EXISTS -eq 0 ]
   then
@@ -17,7 +16,7 @@ main()
     fi
     cf create-service p-mysql $PLAN ${SERVICE_NAME}
   fi
-  cf services
+  summaryOfServices
   cf logout
 }
 

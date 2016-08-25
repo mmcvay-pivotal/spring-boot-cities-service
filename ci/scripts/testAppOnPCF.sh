@@ -1,5 +1,5 @@
 #!/bin/sh 
-. $APPNAME2/ci/scripts/common.sh
+. $APPNAME/ci/scripts/common.sh
 
 searchForCity()
 {
@@ -11,7 +11,8 @@ searchForCity()
 main()
 {
   cf_login
-  checkSpringBootAppOnPCF $APPNAME2
+  summaryOfApps
+  checkSpringBootAppOnPCF $APPNAME
   searchForCity
   cf logout
 }
