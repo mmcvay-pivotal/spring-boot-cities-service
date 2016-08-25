@@ -7,7 +7,7 @@ main()
   VERSION=`cat resource-version/number`
   echo $VERSION
   cd $APPNAME
-  ./gradlew assemble -P $VERSION --no-daemon
+  ./gradlew assemble -P buildversion=$VERSION --no-daemon
   cp build/libs/*.jar ../build
   ls ../build
 }
