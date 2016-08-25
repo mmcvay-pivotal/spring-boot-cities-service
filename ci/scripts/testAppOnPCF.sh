@@ -1,15 +1,6 @@
 #!/bin/sh 
 . $APPNAME/ci/scripts/common.sh
 
-checkAppIsDeployed()
-{
-  URL=`cf apps | grep $APPNAME | xargs | cut -d " " -f 6`
-  exitIfNull $URL
-
-  running=`curl -s $URL/health | grep '"status" : "UP"' `
-  exitIfNull $running
-}
-
 searchForCity()
 {
   running=`curl -s $URL | grep "Aldermoor"`
@@ -19,7 +10,7 @@ searchForCity()
 main()
 {
   cf_login
-  checkAppIsDeployed
+  checkSpringBootAppOnPCF $APPNAME
   searchForCity
   cf logout
 }

@@ -32,3 +32,17 @@ exitIfNull()
     exit 1
   fi
 }
+
+checkAppIsDeployed()
+{
+  URL=`cf apps | grep $1 | xargs | cut -d " " -f 6`
+  exitIfNull $URL
+}
+
+checkSpringBootAppOnPCF()
+{
+  checkAppIsDeployed $1
+
+  running=`curl -s $URL/health | grep '"status" : "UP"' `
+  exitIfNull $running
+}
