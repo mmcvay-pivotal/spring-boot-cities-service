@@ -15,6 +15,7 @@ main()
   APPNAME=$APPNAME-$VERSION
 
   echo_msg "Pushing new Microservice"
+  ls ../build/
   cf push $APPNAME -p ../build/${APPNAME}.jar -f manifest.yml
 
   summaryOfApps
