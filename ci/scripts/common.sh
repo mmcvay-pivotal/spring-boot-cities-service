@@ -45,13 +45,13 @@ exitIfNull()
 {
   if [ -z "${1}" ]
   then
+    echo ${2}
     exit 1
   fi
 }
 
 checkAppIsDeployed()
 {
-  cf apps | grep $1 | xargs | cut -d " " -f 6
   URL=`cf apps | grep $1 | xargs | cut -d " " -f 6`
   exitIfNull $URL
 }
@@ -60,7 +60,6 @@ checkSpringBootAppOnPCF()
 {
   checkAppIsDeployed $1
 
-  curl -s $URL/health | grep '"status" : "UP"'
   running=`curl -s $URL/health | grep '"status" : "UP"'`
   exitIfNull $running
 }

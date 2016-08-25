@@ -4,8 +4,7 @@
 searchForCity()
 {
   running=`curl -s $URL/cities/search/namei?q=Aldermoo2 | grep "SU3915"`
-  echo $running
-  exitIfNull $running
+  exitIfNull $running "Could not find Aldemoor!"
 }
 
 main()
