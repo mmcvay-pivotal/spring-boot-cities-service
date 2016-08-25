@@ -3,6 +3,7 @@
 
 searchForCity()
 {
+  echo $URL
   running=`curl -s $URL | grep "Aldermoor"`
   exitIfNull $running
 }
