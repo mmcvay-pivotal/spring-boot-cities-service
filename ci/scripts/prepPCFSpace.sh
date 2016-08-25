@@ -5,6 +5,7 @@ set -e
 main()
 {
   cf_login 
+  cf services
   EXISTS=`cf services | grep ${SERVICE_NAME} | wc -l | xargs`
   if [ $EXISTS -eq 0 ]
   then
@@ -15,6 +16,7 @@ main()
     fi
     cf create-service p-mysql $PLAN ${SERVICE_NAME}
   fi
+  cf services
   cf logout
 }
 
