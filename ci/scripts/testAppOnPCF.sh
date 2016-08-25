@@ -4,6 +4,8 @@
 searchForCity()
 {
   echo " Searching for Aldemoor ... at $URL"
+  curl -s $URL
+  curl -s $URL | grep "Aldermoor"
   running=`curl -s $URL | grep "Aldermoor"`
   echo $running
   exitIfNull $running
