@@ -12,7 +12,6 @@ inputs:
 
 outputs:
   - name: build
-  - name: resource-version
 
 run:
   path: "cities-service/ci/scripts/package.sh"
