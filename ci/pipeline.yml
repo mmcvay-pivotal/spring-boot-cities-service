@@ -24,11 +24,11 @@ jobs:
   - task: test
     file: cities-service/ci/tasks/test.yml
 
-- name: prepPCFSpace2
+- name: prepPCFSpace
   plan:
   - get: cities-service
     trigger: true
-  - task: prepPCFSpace2
+  - task: prepPCFSpace
     file: cities-service/ci/tasks/prepPCFSpace.yml
     params:
       api: {{CF_API}}
@@ -44,7 +44,7 @@ jobs:
   plan:
   - get: cities-service
     trigger: true
-    passed: [testSrc, prepPCFSpace2]
+    passed: [testSrc, prepPCFSpace]
   - task: package
     file: cities-service/ci/tasks/package.yml
     params:
