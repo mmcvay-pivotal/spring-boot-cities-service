@@ -58,6 +58,8 @@ jobs:
     trigger: true
     passed: [testSrc, prepPCFSpace]
   - get: resource-version
+    params:
+      bump: minor
   - task: package
     file: cities-service/ci/tasks/package.yml
     params:
