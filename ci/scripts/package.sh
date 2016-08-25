@@ -1,10 +1,10 @@
 #!/bin/sh
-. $APPNAME/ci/scripts/common.sh
+. $APPNAME2/ci/scripts/common.sh
 
 main()
 {
-  echo_msg "Starting build for ${APPNAME}"
-  cd $APPNAME
+  echo_msg "Starting build for ${APPNAME2}"
+  cd $APPNAME2
   ./gradlew build
   cp build/libs/*.jar ../build
 }
