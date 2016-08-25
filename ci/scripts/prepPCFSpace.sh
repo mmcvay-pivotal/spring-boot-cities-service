@@ -4,7 +4,7 @@ set -e
 
 main()
 {
-  echo "App is: $APPNAME2"
+  echo "App is: $APPNAME2 - $SERVICE_NAME"
   cf_login 
   cf services
   EXISTS=`cf services | grep ${SERVICE_NAME} | wc -l | xargs`
