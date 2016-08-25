@@ -4,6 +4,7 @@ resources:
   type: git
   source:
     uri: https://github.com/skazi-pivotal/spring-boot-cities-service
+  check_every: 7s
 
 - name: deploy-app
   type: cf
