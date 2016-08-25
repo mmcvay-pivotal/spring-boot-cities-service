@@ -59,7 +59,7 @@ jobs:
     passed: [testSrc, prepPCFSpace]
   - get: resource-version
     params:
-      bump: minor
+      bump: patch
   - task: package
     file: cities-service/ci/tasks/package.yml
     params:
