@@ -18,6 +18,7 @@ resources:
 
 jobs:
 - name: testSrc
+  build_logs_to_retain: 5
   plan:
   - get: cities-service
     trigger: true
@@ -25,6 +26,7 @@ jobs:
     file: cities-service/ci/tasks/test.yml
 
 - name: prepPCFSpace
+  build_logs_to_retain: 5
   plan:
   - get: cities-service
     trigger: true
@@ -41,6 +43,7 @@ jobs:
       SERVICE_NAME: {{SERVICE_NAME}}
 
 - name: deployApp
+  build_logs_to_retain: 5
   plan:
   - get: cities-service
     trigger: true
@@ -56,6 +59,7 @@ jobs:
       current_app_name: {{APPNAME}}
 
 - name: testAppOnPCF
+  build_logs_to_retain: 5
   plan:
   - get: cities-service
     trigger: true
