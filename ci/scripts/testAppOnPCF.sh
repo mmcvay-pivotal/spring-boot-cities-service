@@ -3,7 +3,7 @@
 
 searchForCity()
 {
-  running=`curl -s $URL/cities/search/namei?q=Aldermoor | grep "SU3915"`
+  running=`curl -s $URL/cities/search/name?q=Aldermoor | grep "SU3915"`
   exitIfNull $running
 }
 
