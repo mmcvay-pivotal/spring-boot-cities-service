@@ -28,7 +28,7 @@ jobs:
   plan:
   - get: cities-service
     trigger: true
-  - task: prepPCFSpace
+  - task: prepPCFSpace2
     file: cities-service/ci/tasks/prepPCFSpace.yml
     params:
       api: {{CF_API}}
