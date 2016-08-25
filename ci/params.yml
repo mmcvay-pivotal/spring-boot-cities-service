@@ -1,4 +1,4 @@
-git-uri-bump-semver: https://github.com/skazi-pivotal/spring-boot-cities-service/tree/version
+git-uri: https://github.com/skazi-pivotal/spring-boot-cities-service.git
 CF_API: https://api.run.haas-35.pez.pivotal.io
 CF_USERNAME: skazi
 CF_PASSWORD: letmein
