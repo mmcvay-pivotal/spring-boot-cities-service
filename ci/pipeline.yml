@@ -37,6 +37,7 @@ jobs:
       organization: {{CF_ORG}}
       space: {{CF_SPACE}}
       ssl: {{CF_SSL}}
+      APPNAME: {{APPNAME}}
       SERVICE_NAME: {{SERVICE_NAME}}
 
 - name: deployApp
