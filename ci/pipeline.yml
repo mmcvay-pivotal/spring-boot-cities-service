@@ -55,7 +55,7 @@ jobs:
   - put: deploy-app
     params:
       manifest: cities-service/manifest.yml
-      path: build/cities-service-0.0.1-SNAPSHOT.jar
+      path: build/cities-service-1.0.jar
       current_app_name: {{APPNAME}}
 
 - name: testAppOnPCF

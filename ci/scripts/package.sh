@@ -3,9 +3,9 @@
 
 main()
 {
-  echo_msg "Starting build for ${APPNAME}"
+  echo_msg "Starting assemble for ${APPNAME}"
   cd $APPNAME
-  ./gradlew build
+  ./gradlew assemble
   cp build/libs/*.jar ../build
 }
 
