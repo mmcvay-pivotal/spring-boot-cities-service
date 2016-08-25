@@ -9,6 +9,9 @@ image_resource:
 inputs:
   - name: cities-service
 
+outputs:
+  - name: .gradle
+
 run:
   path: "cities-service/gradlew"
   args: ["--build-file", "cities-service/build.gradle", "test"]
