@@ -5,7 +5,6 @@ image_resource:
   type: docker-image
   source:
     repository: governmentpaas/cf-cli
-    tag: latest
 
 inputs:
   - name: cities-service
