@@ -5,8 +5,9 @@ main()
 {
   echo_msg "Starting assemble for ${APPNAME}"
   VERSION=`cat resource-version/number`
+  echo $VERSION
   cd $APPNAME
-  ./gradlew assemble -P $VERSION
+  ./gradlew assemble -P $VERSION --no-daemon
   cp build/libs/*.jar ../build
   ls ../build
 }
