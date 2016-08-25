@@ -1,0 +1,71 @@
+---
+resources:
+- name: cities-service
+  type: git
+  source:
+    uri: https://github.com/skazi-pivotal/spring-boot-cities-service
+
+- name: deploy-app
+  type: cf
+  source:
+    api: {{CF_API}}
+    username: {{CF_USERNAME}}
+    password: {{CF_PASSWORD}}
+    organization: {{CF_ORG}}
+    space: {{CF_SPACE}}
+    skip_cert_check: true
+
+jobs:
+- name: testSrc
+  plan:
+  - get: cities-service
+    trigger: true
+  - task: test
+    file: cities-service/ci/tasks/test.yml
+
+- name: prepPCFSpace
+  plan:
+  - get: cities-service
+    trigger: true
+  - task: prepPCFSpace
+    file: cities-service/ci/tasks/prepPCFSpace.yml
+    params:
+      api: {{CF_API}}
+      username: {{CF_USERNAME}}
+      password: {{CF_PASSWORD}}
+      organization: {{CF_ORG}}
+      space: {{CF_SPACE}}
+      ssl: {{CF_SSL}}
+      APPNAME: {{APPNAME}}
+      SERVICE_NAME: {{SERVICE_NAME}}
+
+- name: deployApp
+  plan:
+  - get: cities-service
+    trigger: true
+    passed: [testSrc, prepPCFSpace]
+  - task: package
+    file: cities-service/ci/tasks/package.yml
+    params:
+      APPNAME: {{APPNAME}}
+  - put: deploy-app
+    params:
+      manifest: cities-service/manifest.yml
+      path: build/cities-service-0.0.1-SNAPSHOT.jar
+      current_app_name: {{APPNAME}}
+
+- name: testAppOnPCF
+  plan:
+  - get: cities-service
+    trigger: true
+    passed: [deployApp]
+  - task: test
+    file: cities-service/ci/tasks/testAppOnPCF.yml
+    params:
+      api: {{CF_API}}
+      username: {{CF_USERNAME}}
+      password: {{CF_PASSWORD}}
+      organization: {{CF_ORG}}
+      space: {{CF_SPACE}}
+      ssl: {{CF_SSL}}
+      APPNAME: {{APPNAME}}

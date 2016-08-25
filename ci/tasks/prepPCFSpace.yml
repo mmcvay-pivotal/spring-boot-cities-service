@@ -11,4 +11,4 @@ inputs:
   - name: cities-service
 
 run:
-  path: "cities-service/ci/scripts/testAppOnPCF.sh"
+  path: "cities-service/ci/scripts/prepPCFSpace.sh"
