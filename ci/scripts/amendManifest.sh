@@ -8,10 +8,7 @@ main()
 {
   cd $APPNAME
   more manifest.yml
-  cat manifest.yml | head -n 5 >> manifest.tmp
-  echo "  host: $APPNAME-$username" >> manifest.tmp
-  cat manifest.yml | tail -n 6
-  mv manifest.tmp ../output/manifest.yml
+  cat manifest.yml | sed "s/random-route: true/  host: $APPNAME-$username/g" > manifest.tmp
   echo ""
   more ../output/manifest.yml
 }
