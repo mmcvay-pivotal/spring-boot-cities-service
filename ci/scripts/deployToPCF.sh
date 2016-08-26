@@ -3,8 +3,6 @@
 
 main()
 {
-  pwd
-  ls
   cf_login
   summaryOfApps
   VERSION=`cat resource-version/number`

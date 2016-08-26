@@ -1,4 +1,3 @@
----
 resources:
 - name: cities-service
   type: git
@@ -9,15 +8,14 @@ resources:
 - name: resource-version
   type: semver
   source:
+    branch: version
     driver: git
+    file: version
     initial_version: 0.0.1
     uri: {{git-uri}}
-    branch: version
-    file: version
 
 jobs:
 - name: testSrc
-  build_logs_to_retain: 5
   plan:
   - get: cities-service
     trigger: true
@@ -25,7 +23,6 @@ jobs:
     file: cities-service/ci/tasks/test.yml
 
 - name: prepPCFSpace
-  build_logs_to_retain: 5
   plan:
   - get: cities-service
     trigger: true
@@ -33,20 +30,21 @@ jobs:
     file: cities-service/ci/tasks/prepPCFSpace.yml
     params:
       api: {{CF_API}}
-      username: {{CF_USERNAME}}
-      password: {{CF_PASSWORD}}
       organization: {{CF_ORG}}
       space: {{CF_SPACE}}
-      ssl: {{CF_SSL}}
+      username: {{CF_USERNAME}}
+      password: {{CF_PASSWORD}}
+      username: {{CF_USERNAME}}
       APPNAME: {{APPNAME}}
       SERVICE_NAME: {{SERVICE_NAME}}
 
 - name: deployApp
-  build_logs_to_retain: 5
   plan:
   - get: cities-service
+    passed:
+    - testSrc
+    - prepPCFSpace
     trigger: true
-    passed: [testSrc, prepPCFSpace]
   - get: resource-version
   - task: package
     file: cities-service/ci/tasks/package.yml
@@ -57,26 +55,26 @@ jobs:
     file: cities-service/ci/tasks/deployToPCF.yml
     params:
       api: {{CF_API}}
-      username: {{CF_USERNAME}}
-      password: {{CF_PASSWORD}}
       organization: {{CF_ORG}}
       space: {{CF_SPACE}}
-      ssl: {{CF_SSL}}
+      username: {{CF_USERNAME}}
+      password: {{CF_PASSWORD}}
+      username: {{CF_USERNAME}}
       APPNAME: {{APPNAME}}
 
 - name: testAppOnPCF
-  build_logs_to_retain: 5
   plan:
   - get: cities-service
+    passed:
+    - deployApp
     trigger: true
-    passed: [deployApp]
   - task: test
     file: cities-service/ci/tasks/testAppOnPCF.yml
     params:
       api: {{CF_API}}
-      username: {{CF_USERNAME}}
-      password: {{CF_PASSWORD}}
       organization: {{CF_ORG}}
       space: {{CF_SPACE}}
-      ssl: {{CF_SSL}}
+      username: {{CF_USERNAME}}
+      password: {{CF_PASSWORD}}
+      username: {{CF_USERNAME}}
       APPNAME: {{APPNAME}}
