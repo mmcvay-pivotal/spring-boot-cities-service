@@ -14,7 +14,8 @@ main()
 
   echo_msg "Pushing new Microservice"
   ls ../build/
-  cf push $APPNAME -p ../build/${APPNAME}.jar -f manifest.yml
+  BPACK=`cf buildpacks | grep java | grep true | head -n 1 | cut -d ' ' -f1 | xargs`
+  cf push $APPNAME -p ../build/${APPNAME}.jar -f manifest.yml -b ${BPACK}
 
   summaryOfApps
   cf logout
