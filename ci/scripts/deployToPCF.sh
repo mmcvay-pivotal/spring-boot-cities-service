@@ -1,21 +1,30 @@
 #!/bin/sh 
 . $APPNAME/ci/scripts/common.sh
 
-main()
+createNewNameBasedOnVersion()
 {
-  cf_login
-  summaryOfApps
   VERSION=`cat resource-version/number`
   echo $VERSION
 
   cd $APPNAME
-  ## Variables used during Jenkins Build Process
   APPNAME=$APPNAME-$VERSION
+}
 
+push()
+{
   echo_msg "Pushing new Microservice"
   ls ../build/
   BPACK=`cf buildpacks | grep java | grep true | head -n 1 | cut -d ' ' -f1 | xargs`
   cf push $APPNAME -p ../build/${APPNAME}.jar -f manifest.yml -b ${BPACK}
+}
+
+main()
+{
+  cf_login
+  summaryOfApps
+
+  createNewNameBasedOnVersion
+  push
 
   summaryOfApps
   cf logout
