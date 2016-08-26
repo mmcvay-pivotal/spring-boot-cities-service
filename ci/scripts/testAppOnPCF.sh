@@ -3,7 +3,9 @@
 
 searchForCity()
 {
+  echo_msg "Checking for specific city"
   running=`curl -s $URL/cities/search/name?q=Aldermoor | grep "SU3915"`
+  echo $running
   exitIfNull $running
 }
 

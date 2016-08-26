@@ -63,7 +63,9 @@ checkSpringBootAppOnPCF()
   echo_msg "Checking $1 is deployed to PCF and running ok"
   checkAppIsDeployed $1
 
+  echo_msg "Checking Spring Boot Actuator health endpoint"
   running=`curl -s $URL/health | grep '"status" : "UP"'`
+  echo $running
   exitIfNull $running
 }
 
