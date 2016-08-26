@@ -1,16 +1,6 @@
 #!/bin/sh 
 . $APPNAME/ci/scripts/common.sh
 
-createVarsBasedOnVersion()
-{
-  VERSION=`cat resource-version/number | sed -e 's/\./_/g'`
-  export CF_APPNAME=${APPNAME}-${username}-${VERSION}
-  echo ${CF_APPNAME}
-
-  JARNAME=${APPNAME}-${VERSION}.jar
-  echo ${JARNAME}
-}
-
 push()
 {
   echo_msg "Pushing new Microservice"

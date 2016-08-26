@@ -64,3 +64,12 @@ checkSpringBootAppOnPCF()
   running=`curl -s $URL/health | grep '"status" : "UP"'`
   exitIfNull $running
 }
+
+createVarsBasedOnVersion()
+{
+  VERSION=`cat resource-version/number | sed -e 's/\./_/g'`
+  CF_APPNAME=${APPNAME}-${username}-${VERSION}
+
+  JARNAME=${APPNAME}-${VERSION}.jar
+}
+

@@ -11,6 +11,7 @@ main()
 {
   cf_login
   summaryOfApps
+  createVarsBasedOnVersion
   checkSpringBootAppOnPCF $CF_APPNAME
   searchForCity
   echo "logging out"
