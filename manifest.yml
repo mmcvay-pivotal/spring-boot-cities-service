@@ -3,7 +3,7 @@ applications:
 - name: cities-service
   memory: 512M
   instances: 1
-  random-route: true
+  host: cities-service-yourname
   path: build/libs/boot-cities-service-1.0.jar
   timeout: 160
   services:
