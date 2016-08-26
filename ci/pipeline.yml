@@ -73,8 +73,10 @@ jobs:
       current_app_name: {{APPNAME}}
       tag: version/version
       tag_prefix: v
-  - task: addVersionedRoute
-    file: cities-service/ci/tasks/addVersionRoute.yml
+  - task: addVersionedInfo
+    file: cities-service/ci/tasks/addVersionInfo.yml
+    params:
+      APPNAME: {{APPNAME}}
 
 - name: testAppOnPCF
   plan:
