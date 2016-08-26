@@ -9,7 +9,7 @@ addVersionEnv()
 newRoute()
 {
   DOMAIN=`cf domains | grep shared | head -n 1 | cut -d" " -f1`
-  VERSION=`echo $VERSION | | sed -e 's/\./_/g'`
+  VERSION=`echo $VERSION | sed -e 's/\./_/g'`
   echo "$APPNAME $DOMAIN -n $APPNAME-$VERSION"
   cf map-route $APPNAME $DOMAIN -n $APPNAME-$VERSION
 }
