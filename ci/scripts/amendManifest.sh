@@ -1,9 +1,17 @@
 #!/bin/sh
 . $APPNAME/ci/scripts/common.sh
 
+## Only necessary if demoing on shared env with many people pushing the same app
+## Using random-route: true screws up autopilot
+
 main()
 {
   cd $APPNAME
+  more manifest.yml
+  cat ../../manifest.yml | head -n 5 >> manifest.tmp
+  echo "  host: $APPNAME-$username" >> manifest.tmp
+  cat ../../manifest.yml | tail -n 6
+  mv manifest.tmp manifest.yml
   more manifest.yml
 }
 
