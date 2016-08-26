@@ -1,23 +1,24 @@
 #!/bin/sh 
 . $APPNAME/ci/scripts/common.sh
 
-createNewNameBasedOnVersion()
+createVarsBasedOnVersion()
 {
   VERSION=`cat resource-version/number | sed -e 's/\./_/g'`
-  echo $VERSION
+  CF_APPNAME=${APPNAME}-${username}-${VERSION}
+  echo ${CF_APPNAME}
 
-  cd $APPNAME
-  CF_APPNAME=$APPNAME-$username-$VERSION
-  echo $CF_APPNAME
+  JARNAME=${APPNAME}-${VERSION}.jar
+  echo ${JARNAME}
 }
 
 push()
 {
   echo_msg "Pushing new Microservice"
-  ls ../build/
+  cd $APPNAME
+
   BPACK=`cf buildpacks | grep java | grep true | head -n 1 | cut -d ' ' -f1 | xargs`
-  echo "cf push $CF_APPNAME -f manifest.yml -p ../build/${APPNAME}.jar -b ${BPACK} -n ${CF_APPNAME}"
-  cf push $CF_APPNAME -f manifest.yml -p ../build/${APPNAME}.jar -b ${BPACK} -n ${CF_APPNAME}
+  echo "cf push $CF_APPNAME -f manifest.yml -p ../build/${JARNAME} -b ${BPACK} -n ${CF_APPNAME}"
+  cf push $CF_APPNAME -f manifest.yml -p ../build/${JARNAME} -b ${BPACK} -n ${CF_APPNAME}
 
   echo "Pushing Live Route"
   DOMAIN=`cf domains | grep shared | head -n 1 | cut -d" " -f1`
@@ -30,7 +31,7 @@ main()
   cf_login
   summaryOfApps
 
-  createNewNameBasedOnVersion
+  createVarsBasedOnVersion
   push
 
   summaryOfApps
