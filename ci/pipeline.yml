@@ -74,13 +74,13 @@ jobs:
   - task: addVersionInfo
     file: cities-service/ci/tasks/addVersionInfo.yml
     params:
-      APPNAME: {{APPNAME}}
       api: {{CF_API}}
-      username: {{CF_USERNAME}}
-      password: {{CF_PASSWORD}}
       organization: {{CF_ORG}}
       space: {{CF_SPACE}}
+      username: {{CF_USERNAME}}
+      password: {{CF_PASSWORD}}
       ssl: {{CF_SSL}}
+      APPNAME: {{APPNAME}}
 
 - name: testAppOnPCF
   plan:
