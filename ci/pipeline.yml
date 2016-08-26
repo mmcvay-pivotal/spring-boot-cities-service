@@ -74,8 +74,7 @@ jobs:
     passed:
       - deployApp
     trigger: true
-  - put: resource-version
-    params: {file: resource-version/number}
+  - get: resource-version
   - task: test
     file: cities-service/ci/tasks/testAppOnPCF.yml
     params:
