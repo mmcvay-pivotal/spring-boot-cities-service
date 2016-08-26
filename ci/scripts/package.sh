@@ -9,7 +9,6 @@ main()
   #./gradlew assemble -P buildversion=$VERSION --no-daemon
   ./gradlew assemble --no-daemon
   cp build/libs/*.jar ../build
-  cat resource-version/number >> ../build/version
   ls ../build
 }
 
