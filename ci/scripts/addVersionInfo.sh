@@ -9,7 +9,8 @@ addVersionEnv()
 newRoute()
 {
   DOMAIN=`cf domains | grep shared | head -n 1 | cut -d" " -f1`
-  echo "$APPNAME $DOMAIN -n $APPNAME-$username"
+  VERSION=`echo $VERSION | | sed -e 's/\./_/g'`
+  echo "$APPNAME $DOMAIN -n $APPNAME-$VERSION"
   cf map-route $APPNAME $DOMAIN -n $APPNAME-$VERSION
 }
 
@@ -19,8 +20,8 @@ main()
 
   summaryOfApps
   createVarsBasedOnVersion
-  newRoute
   addVersionEnv
+  newRoute
   summaryOfApps
 
   cf logout
