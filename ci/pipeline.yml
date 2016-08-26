@@ -14,6 +14,7 @@ resources:
     initial_version: 0.0.1
     uri: {{GIT-SSH-URI}}
     private_key: {{GIT_KEY}}
+    git_user: {{GIT_USER}}
 
 jobs:
 - name: testSrc
