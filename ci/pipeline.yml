@@ -73,7 +73,7 @@ jobs:
       username: {{CF_USERNAME}}
   - put: deployToPCF
     params:
-      manifest: cities-service/manifest.yml
+      manifest: output/manifest.yml
       path: build/cities-service-1.0.jar
       current_app_name: {{APPNAME}}
   - task: addVersionInfo

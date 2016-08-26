@@ -8,10 +8,10 @@ main()
 {
   cd $APPNAME
   more manifest.yml
-  cat ../../manifest.yml | head -n 5 >> manifest.tmp
+  cat manifest.yml | head -n 5 >> manifest.tmp
   echo "  host: $APPNAME-$username" >> manifest.tmp
-  cat ../../manifest.yml | tail -n 6
-  mv manifest.tmp manifest.yml
+  cat manifest.yml | tail -n 6
+  mv manifest.tmp ../output/manifest.yml
   more manifest.yml
 }
 

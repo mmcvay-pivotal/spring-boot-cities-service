@@ -9,5 +9,8 @@ image_resource:
 inputs:
   - name: cities-service
 
+outputs:
+  - name: output
+
 run:
   path: "cities-service/ci/scripts/amendManifest.sh"
