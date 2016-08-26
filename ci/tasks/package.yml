@@ -9,7 +9,6 @@ image_resource:
 inputs:
   - name: cities-service
   - name: resource-version
-  - name: .gradle
 
 outputs:
   - name: build
