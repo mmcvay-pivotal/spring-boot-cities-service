@@ -22,8 +22,8 @@ push()
 
   echo "Pushing Live Route"
   DOMAIN=`cf domains | grep shared | head -n 1 | cut -d" " -f1`
-  echo "$CF_APPNAME $DOMAIN -n $CF_APPNAME-$username"
-  cf map-route $CF_APPNAME $DOMAIN -n $CF_APPNAME-$username
+  echo "$CF_APPNAME $DOMAIN -n $APPNAME-$username"
+  cf map-route $CF_APPNAME $DOMAIN -n $APPNAME-$username
 }
 
 main()
