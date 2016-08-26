@@ -44,8 +44,8 @@ jobs:
   plan:
   - get: cities-service
     passed:
-    - testSrc
-    - prepPCFSpace
+      - testSrc
+      - prepPCFSpace
     trigger: true
   - get: resource-version
     params:
@@ -72,8 +72,10 @@ jobs:
   plan:
   - get: cities-service
     passed:
-    - deployApp
+      - deployApp
     trigger: true
+  - put: resource-version
+    params: {file: resource-version/number}
   - task: test
     file: cities-service/ci/tasks/testAppOnPCF.yml
     params:
