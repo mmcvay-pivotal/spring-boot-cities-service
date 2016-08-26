@@ -10,4 +10,4 @@ inputs:
   - name: cities-service
 
 run:
-  path: "cities-service/ci/scripts/createPCFSpace.sh
+  path: "cities-service/ci/scripts/createPCFSpace.sh"
