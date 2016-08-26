@@ -7,7 +7,7 @@ createNewNameBasedOnVersion()
   echo $VERSION
 
   cd $APPNAME
-  APPNAME=$APPNAME-$VERSION
+  APPNAME=$APPNAME$APPSUFFIX-$VERSION
 }
 
 push()

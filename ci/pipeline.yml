@@ -66,6 +66,7 @@ jobs:
       password: {{CF_PASSWORD}}
       ssl: {{CF_SSL}}
       APPNAME: {{APPNAME}}
+      APPSUFFIX: {{APPSUFFIX}}
 
 - name: testAppOnPCF
   plan:
