@@ -70,12 +70,9 @@ checkSpringBootAppOnPCF()
 createVarsBasedOnVersion()
 {
   VERSION=`cat resource-version/number | sed -e 's/\./_/g'`
-  CF_APPNAME=${APPNAME}-${username}-${VERSION}
-
-  JARNAME=${APPNAME}-${VERSION}.jar
+  #CF_APPNAME=${APPNAME}-${username}-${VERSION}
+  #JARNAME=${APPNAME}-${VERSION}.jar
 
   echo $VERSION
-  echo $CF_APPNAME
-  echo $JARNAME
 }
 
