@@ -58,6 +58,7 @@ checkAppIsDeployed()
 
 checkSpringBootAppOnPCF()
 {
+  echo_msg "Checking $1 is deployed to PCF and running ok"
   checkAppIsDeployed $1
 
   running=`curl -s $URL/health | grep '"status" : "UP"'`

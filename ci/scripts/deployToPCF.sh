@@ -4,7 +4,7 @@
 createVarsBasedOnVersion()
 {
   VERSION=`cat resource-version/number | sed -e 's/\./_/g'`
-  CF_APPNAME=${APPNAME}-${username}-${VERSION}
+  export CF_APPNAME=${APPNAME}-${username}-${VERSION}
   echo ${CF_APPNAME}
 
   JARNAME=${APPNAME}-${VERSION}.jar
