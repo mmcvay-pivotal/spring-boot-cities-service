@@ -11,5 +11,8 @@ inputs:
   - name: resource-version
   - name: build
 
+outputs:
+  - name: deployOutputs
+
 run:
   path: "cities-service/ci/scripts/deployToPCF.sh"

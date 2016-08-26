@@ -19,12 +19,13 @@ push()
 main()
 {
   cf_login
-  summaryOfApps
 
+  summaryOfApps
   createVarsBasedOnVersion
   push
-
   summaryOfApps
+  echo "CF_APPNAME=${CF_APPNAME}" > ../deployOutputs/outputs.list 
+
   cf logout
 }
 
