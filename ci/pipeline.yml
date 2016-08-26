@@ -75,6 +75,12 @@ jobs:
     file: cities-service/ci/tasks/addVersionInfo.yml
     params:
       APPNAME: {{APPNAME}}
+      api: {{CF_API}}
+      username: {{CF_USERNAME}}
+      password: {{CF_PASSWORD}}
+      organization: {{CF_ORG}}
+      space: {{CF_SPACE}}
+      ssl: {{CF_SSL}}
 
 - name: testAppOnPCF
   plan:
