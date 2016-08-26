@@ -71,9 +71,7 @@ jobs:
       manifest: cities-service/manifest.yml
       path: build/cities-service-1.0.jar
       current_app_name: {{APPNAME}}
-      tag: version/version
-      tag_prefix: v
-  - task: addVersionedInfo
+  - task: addVersionInfo
     file: cities-service/ci/tasks/addVersionInfo.yml
     params:
       APPNAME: {{APPNAME}}
