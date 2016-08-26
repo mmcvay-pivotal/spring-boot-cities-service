@@ -7,7 +7,7 @@ createNewNameBasedOnVersion()
   echo $VERSION
 
   cd $APPNAME
-  CF_APPNAME=$APPNAME-$CF_USER-$VERSION
+  CF_APPNAME=$APPNAME-$username-$VERSION
 }
 
 push()
@@ -19,7 +19,7 @@ push()
 
   echo "Pushing Live Route"
   DOMAIN=`cf domains | grep shared | head -n 1 | cut -d" " -f1`
-  cf map-route $APP_NAME $CF_DOMAIN -n $APP_PREFIX-$CF_USER
+  cf map-route $APP_NAME $CF_DOMAIN -n $APPNAME-$CF_USER
 }
 
 main()
