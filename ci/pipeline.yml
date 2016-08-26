@@ -12,7 +12,7 @@ resources:
     driver: git
     file: version
     initial_version: 0.0.1
-    uri: {{git-uri}}
+    uri: {{GIT-SSH-URI}}
     private_key: {{GIT_KEY}}
 
 jobs:
