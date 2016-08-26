@@ -3,7 +3,7 @@
 
 createNewNameBasedOnVersion()
 {
-  VERSION=`cat resource-version/number`
+  VERSION=`cat resource-version/number | sed -e 's/\./_/g'`
   echo $VERSION
 
   cd $APPNAME
