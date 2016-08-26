@@ -12,7 +12,8 @@ main()
   echo "  host: $APPNAME-$username" >> manifest.tmp
   cat manifest.yml | tail -n 6
   mv manifest.tmp ../output/manifest.yml
-  more manifest.yml
+  echo ""
+  more ../output/manifest.yml
 }
 
 trap 'abort $LINENO' 0
