@@ -7,7 +7,7 @@ createNewNameBasedOnVersion()
   echo $VERSION
 
   cd $APPNAME
-  APPNAME=$APPNAME$APPSUFFIX-$VERSION
+  CF_APPNAME=$APPNAME-$CF_USER-$VERSION
 }
 
 push()
@@ -15,7 +15,11 @@ push()
   echo_msg "Pushing new Microservice"
   ls ../build/
   BPACK=`cf buildpacks | grep java | grep true | head -n 1 | cut -d ' ' -f1 | xargs`
-  cf push $APPNAME -p ../build/${APPNAME}.jar -f manifest.yml -b ${BPACK}
+  cf push $CF_APPNAME -f manifest.yml -p ../build/${APPNAME}.jar -b ${BPACK} -n $CF_APPNAME
+
+  echo "Pushing Live Route"
+  DOMAIN=`cf domains | grep shared | head -n 1 | cut -d" " -f1`
+  cf map-route $APP_NAME $CF_DOMAIN -n $APP_PREFIX-$CF_USER
 }
 
 main()
