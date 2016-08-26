@@ -13,12 +13,7 @@ main()
 
   summaryOfApps
   createVarsBasedOnVersion
-
-  ls ../deployOutputs/outputs.list
-  cat ../deployOutputs/outputs.list
-  CF_APPNAME = cat ../deployOutputs/outputs.list | grep CF_APPNAME | cut -d "=" -f2
   echo $CF_APPNAME
-
   checkSpringBootAppOnPCF $CF_APPNAME
   searchForCity
 

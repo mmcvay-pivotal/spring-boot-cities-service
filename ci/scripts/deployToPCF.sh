@@ -24,7 +24,6 @@ main()
   createVarsBasedOnVersion
   push
   summaryOfApps
-  echo "CF_APPNAME=${CF_APPNAME}" > ../deployOutputs/outputs.list 
 
   cf logout
 }
