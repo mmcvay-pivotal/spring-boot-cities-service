@@ -12,9 +12,8 @@ main()
   cf_login
 
   summaryOfApps
-  createVarsBasedOnVersion
-  echo $CF_APPNAME
-  checkSpringBootAppOnPCF $CF_APPNAME
+  echo $APPNAME
+  checkSpringBootAppOnPCF $APPNAME
   searchForCity
 
   cf logout
