@@ -71,5 +71,9 @@ createVarsBasedOnVersion()
   CF_APPNAME=${APPNAME}-${username}-${VERSION}
 
   JARNAME=${APPNAME}-${VERSION}.jar
+
+  echo $VERSION
+  echo $CF_APPNAME
+  echo $JARNAME
 }
 
