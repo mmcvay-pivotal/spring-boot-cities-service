@@ -13,6 +13,7 @@ resources:
     file: version
     initial_version: 0.0.1
     uri: {{git-uri}}
+    private_key: {{GIT_KEY}}
 
 jobs:
 - name: testSrc
@@ -46,10 +47,14 @@ jobs:
     - prepPCFSpace
     trigger: true
   - get: resource-version
+    params:
+      bump: patch
   - task: package
     file: cities-service/ci/tasks/package.yml
     params:
       APPNAME: {{APPNAME}}
+  - put: resource-version
+    params: {file: resource-version/number}
   - get: resource-version
   - task: deploy
     file: cities-service/ci/tasks/deployToPCF.yml
