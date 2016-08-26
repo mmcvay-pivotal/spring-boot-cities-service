@@ -4,7 +4,7 @@
 main()
 {
   echo_msg "Starting assemble for ${APPNAME}"
-  VERSION=`cat resource-version/number`
+  VERSION=`cat resource-version/number| sed -e 's/\./_/g'`
   echo $VERSION
   cd $APPNAME
   ./gradlew assemble -P buildversion=$VERSION --no-daemon
