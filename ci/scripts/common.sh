@@ -52,7 +52,9 @@ exitIfNull()
 
 checkAppIsDeployed()
 {
+  cf apps | grep $1 | xargs | cut -d " " -f 6
   URL=`cf apps | grep $1 | xargs | cut -d " " -f 6`
+  echo "URL is: $URL"
   exitIfNull $URL
 }
 
