@@ -5,6 +5,7 @@ main()
 {
   if [ ! -z $CREATE_FRESH_SPACE ]
   then
+    echo_msg "Creating space"
     cf_login
     cf delete-space -s $space -f
     cf create-space $space
