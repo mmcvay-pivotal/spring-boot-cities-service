@@ -7,6 +7,7 @@ CF_SPACE: <<your space>>
 CF_SSL: <<--skip-ssl-validation or blank>>
 APPNAME: cities-service
 SERVICE_NAME: MyDB
+CREATE_FRESH_SPACE: <<blank or anything e.g. y>>
 GIT-SSH-URI: git@github.com:skazi-pivotal/spring-boot-cities-service.git
 GIT_USER: <<your github user id>>
 GIT_KEY: |-
