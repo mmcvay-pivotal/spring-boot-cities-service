@@ -76,5 +76,5 @@ jobs:
       space: {{CF_SPACE}}
       username: {{CF_USERNAME}}
       password: {{CF_PASSWORD}}
-      username: {{CF_USERNAME}}
+      ssl: {{CF_SSL}}
       APPNAME: {{APPNAME}}
