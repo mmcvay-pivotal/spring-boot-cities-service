@@ -10,6 +10,7 @@ main()
   more manifest.yml
   cat manifest.yml | sed "s/random-route: true/  host: $APPNAME-$username/g" > manifest.tmp
   echo ""
+  mv manifest.tmp ../output/manifest.yml
   more ../output/manifest.yml
 }
 
