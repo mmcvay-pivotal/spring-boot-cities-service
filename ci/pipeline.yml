@@ -66,6 +66,11 @@ jobs:
       APPNAME: {{APPNAME}}
   - put: resource-version
     params: {file: resource-version/number}
+  - task: amendManifest
+    file: cities-service/ci/tasks/amendManifest.yml
+    params:
+      APPNAME: {{APPNAME}}
+      username: {{CF_USERNAME}}
   - put: deployToPCF
     params:
       manifest: cities-service/manifest.yml
