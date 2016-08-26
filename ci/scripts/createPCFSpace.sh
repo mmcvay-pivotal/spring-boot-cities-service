@@ -7,7 +7,7 @@ main()
   then
     echo_msg "Creating space"
     cf_login
-    cf delete-space -s $space -f
+    cf delete-space $space -f
     cf create-space $space
     cf logout
   fi
