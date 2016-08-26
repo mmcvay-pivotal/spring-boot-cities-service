@@ -71,7 +71,8 @@ jobs:
       manifest: cities-service/manifest.yml
       path: build/cities-service-1.0.jar
       current_app_name: {{APPNAME}}
-    params: {file: resource-version/number}
+      tag: version/version
+      tag_prefix: v
   - task: addVersionedRoute
     file: cities-service/ci/tasks/addVersionRoute.yml
 
