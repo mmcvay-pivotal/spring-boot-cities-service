@@ -14,7 +14,6 @@ main()
   cf_login
 
   summaryOfApps
-  echo $APPNAME
   checkAppIsDeployed $APPNAME
   checkSpringBootAppOnPCF $URL
   searchForCity
