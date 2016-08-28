@@ -15,7 +15,8 @@ main()
 
   summaryOfApps
   echo $APPNAME
-  checkSpringBootAppOnPCF $APPNAME
+  checkAppIsDeployed $APPNAME
+  checkSpringBootAppOnPCF $URL
   searchForCity
 
   cf logout
