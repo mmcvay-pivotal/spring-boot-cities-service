@@ -28,6 +28,7 @@ resources:
 
 jobs:
 - name: testSrc
+  build_logs_to_retain: 5
   plan:
   - get: cities-service
     trigger: true
@@ -51,6 +52,7 @@ jobs:
       APPNAME: {{APPNAME}}
 
 - name: prepPCFSpace
+  build_logs_to_retain: 5
   plan:
   - get: cities-service
     passed:
@@ -69,6 +71,7 @@ jobs:
       SERVICE_NAME: {{SERVICE_NAME}}
 
 - name: packageAndDeploy
+  build_logs_to_retain: 5
   plan:
   - get: cities-service
     passed:
@@ -106,6 +109,7 @@ jobs:
       APPNAME: {{APPNAME}}
 
 - name: testAppOnPCF
+  build_logs_to_retain: 5
   plan:
   - get: cities-service
     passed:
