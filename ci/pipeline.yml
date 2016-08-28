@@ -89,7 +89,6 @@ jobs:
       APPNAME: {{APPNAME}}
   - put: resource-version
     params: {file: resource-version/number}
-  - get: resource-version
   - task: amendManifest
     file: cities-service/ci/tasks/amendManifest.yml
     params:
