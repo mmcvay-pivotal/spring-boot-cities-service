@@ -3,7 +3,7 @@
 
 main()
 {
-  VERSION=`cat resource-version/number| sed -e 's/\./_/g'`
+  createVarsBasedOnVersion
   echo_msg "Starting assemble for ${APPNAME} at version: ${VERSION}"
   cd $APPNAME
   ./gradlew assemble -P buildversion=$VERSION --no-daemon
