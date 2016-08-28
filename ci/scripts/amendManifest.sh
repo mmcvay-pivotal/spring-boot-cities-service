@@ -7,11 +7,14 @@
 main()
 {
   cd $APPNAME
+  createVarsBasedOnVersion
   more manifest.yml
-  cat manifest.yml | sed "s/random-route: true/host: $APPNAME-$username/g" > manifest.tmp
+  cat manifest.yml | sed "s/random-route: true/host: $APPNAME-$username/g" | sed "s/build\/libs\/cities-service-1.0.jar/..\/output\/cities-service-$VERSIOM.jar/g" > manifest.tmp
   echo ""
   mv manifest.tmp ../output/manifest.yml
   more ../output/manifest.yml
+
+  ls ../output
 }
 
 trap 'abort $LINENO' 0
