@@ -35,7 +35,7 @@ jobs:
   - task: test
     file: cities-service/ci/tasks/test.yml
 
-- name: createPCFSpace
+- name: createSpace
   build_logs_to_retain: 5
   plan:
   - get: cities-service
@@ -52,14 +52,15 @@ jobs:
       ssl: {{CF_SSL}}
       APPNAME: {{APPNAME}}
 
-- name: prepPCFSpace
+
+- name: prepSpace
   build_logs_to_retain: 5
   plan:
   - get: cities-service
     passed:
-      - createPCFSpace
+      - createSpace
     trigger: true
-  - task: prepPCFSpace
+  - task: prepSpace
     file: cities-service/ci/tasks/prepPCFSpace.yml
     params:
       api: {{CF_API}}
@@ -71,13 +72,13 @@ jobs:
       APPNAME: {{APPNAME}}
       SERVICE_NAME: {{SERVICE_NAME}}
 
-- name: packageAndDeploy
+- name: packageNPush
   build_logs_to_retain: 5
   plan:
   - get: cities-service
     passed:
       - testSrc
-      - prepPCFSpace
+      - prepSpace
     trigger: true
   - get: resource-version
     params:
@@ -109,12 +110,12 @@ jobs:
       ssl: {{CF_SSL}}
       APPNAME: {{APPNAME}}
 
-- name: testAppOnPCF
+- name: testOnPCF
   build_logs_to_retain: 5
   plan:
   - get: cities-service
     passed:
-      - packageAndDeploy
+      - packageNPush
     trigger: true
   - task: test
     file: cities-service/ci/tasks/testAppOnPCF.yml
