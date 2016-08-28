@@ -118,7 +118,7 @@ jobs:
       - packageNPush
     trigger: true
   - task: test
-    file: cities-service/ci/tasks/testAppOnPCF.yml
+    file: cities-service/ci/tasks/testOnPCF.yml
     params:
       api: {{CF_API}}
       organization: {{CF_ORG}}
