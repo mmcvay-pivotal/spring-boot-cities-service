@@ -1,3 +1,4 @@
+---
 resources:
 - name: cities-service
   type: git
@@ -36,6 +37,7 @@ jobs:
     file: cities-service/ci/tasks/test.yml
 
 - name: createPCFSpace
+  build_logs_to_retain: 5
   plan:
   - get: cities-service
     trigger: true
