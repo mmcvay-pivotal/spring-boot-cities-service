@@ -13,8 +13,6 @@ main()
   echo ""
   mv manifest.tmp ../output/manifest.yml
   more ../output/manifest.yml
-
-  ls ../output
 }
 
 trap 'abort $LINENO' 0
