@@ -8,6 +8,7 @@ image_resource:
 
 inputs:
   - name: cities-service
+  - name: resource-version
 
 outputs:
   - name: output
