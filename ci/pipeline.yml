@@ -5,6 +5,7 @@ resources:
   source:
     uri: {{git-uri}}
     branch: SCS
+  check_every: 5s
 
 - name: resource-version
   type: semver
