@@ -71,7 +71,8 @@ jobs:
       password: {{CF_PASSWORD}}
       ssl: {{CF_SSL}}
       APPNAME: {{APPNAME}}
-      SERVICE_NAME: {{SERVICE_NAME}}
+      DB_SERVICE_NAME: {{DB_SERVICE_NAME}}
+      EUREKA_SERVICE_NAME: {{EUREKA_SERVICE_NAME}}
 
 - name: packageNPush
   build_logs_to_retain: 5
