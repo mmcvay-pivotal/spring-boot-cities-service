@@ -37,6 +37,7 @@ main()
     while [ "$number" -lt $max ]
     do
       echo "Pausing to allow Service Discovery to Initialise.....$number/$max"
+      number=`expr $number + 1 `
       sleep 5
     done
   fi
