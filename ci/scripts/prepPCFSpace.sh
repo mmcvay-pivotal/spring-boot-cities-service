@@ -33,8 +33,10 @@ main()
   then
     # Sleep for service registry
     max=12
-    for ((i=1; i<=$max; ++i )) ; do
-      echo "Pausing to allow Service Discovery to Initialise.....$i/$max"
+    number=0
+    while [ "$number" -lt $max ]
+    do
+      echo "Pausing to allow Service Discovery to Initialise.....$number/$max"
       sleep 5
     done
   fi
