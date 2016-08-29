@@ -17,7 +17,7 @@ main()
 {
   cf_login 
   summaryOfServices
-  EXISTS=`cf services | grep ${SERVICE_NAME} | wc -l | xargs`
+  EXISTS=`cf services | grep ${DB_SERVICE_NAME} | wc -l | xargs`
   if [ $EXISTS -eq 0 ]
   then
     PLAN=`cf marketplace -s p-mysql | grep MB | head -n 1 | cut -d ' ' -f1 | xargs`
@@ -25,10 +25,10 @@ main()
     then
       PLAN=`cf marketplace -s p-mysql | grep MySQL | head -n 1 | cut -d ' ' -f1 | xargs`
     fi
-    cf create-service p-mysql $PLAN ${SERVICE_NAME}
+    cf create-service p-mysql $PLAN ${DB_SERVICE_NAME}
   fi
 
-  create_service p-service-registry standard $DISCOVERY
+  create_service p-service-registry standard $EUREKA_SERVICE_NAME
   if [ $service_created -eq 1 ]
   then
     # Sleep for service registry
