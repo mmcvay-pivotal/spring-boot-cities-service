@@ -49,7 +49,7 @@ dependencies {
     compile "org.springframework.cloud:spring-cloud-spring-service-connector:${springCloudConnectorsVersion}"
     compile "org.springframework.cloud:spring-cloud-cloudfoundry-connector:${springCloudConnectorsVersion}"
     
-    compile "com.microsoft.sqlserver:mssql-jdbc:6.1.0.jre8"
+    runtime "com.microsoft.sqlserver:mssql-jdbc:6.1.0.jre8"
     
 	runtime('com.h2database:h2')
 	//runtime("mysql:mysql-connector-java")
